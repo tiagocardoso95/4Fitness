@@ -21,9 +21,10 @@ import static android.view.View.*;
 
 public class SignUpActivity extends AppCompatActivity {
 
-    private EditText userEmail, userPassword;
+    private EditText userEmail, userPassword, userConfirmPassword;
     private ProgressBar loadingProgress;
-    private Button signUpButton;
+    private Button signUpButton, signInButton;
+
 
     private FirebaseAuth fbAuth;
 
@@ -35,8 +36,10 @@ public class SignUpActivity extends AppCompatActivity {
 
         userEmail = findViewById(R.id.email_textField);
         userPassword = findViewById(R.id.password_textField);
+        userConfirmPassword = findViewById(R.id.confirmpassword_textField);
         loadingProgress = findViewById(R.id.progressBar);
         signUpButton = findViewById(R.id.signup_button);
+        signInButton = findViewById(R.id.signIn_button);
         loadingProgress.setVisibility(INVISIBLE);
 
         fbAuth = FirebaseAuth.getInstance();
@@ -49,14 +52,26 @@ public class SignUpActivity extends AppCompatActivity {
                 loadingProgress.setVisibility(view.VISIBLE);
                 final String email = userEmail.getText().toString();
                 final String password = userPassword.getText().toString();
+                final String confirmPassword = userConfirmPassword.getText().toString();
 
-                if(email.isEmpty() || password.isEmpty()){
+                if(email.isEmpty() || password.isEmpty() || confirmPassword.isEmpty()) {
                     showMessage("Please verify all fields!");
+                    signUpButton.setVisibility(View.VISIBLE);
+                    loadingProgress.setVisibility(View.INVISIBLE);
+                }else if(!confirmPassword.equals(password)){
+                    showMessage("Passwords do not match!");
                     signUpButton.setVisibility(View.VISIBLE);
                     loadingProgress.setVisibility(View.INVISIBLE);
                 }else{
                     CreateUserAccount(email,password);
                 }
+            }
+        });
+
+        signInButton.setOnClickListener(new OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                changeToSignInPage();
             }
         });
 
@@ -73,7 +88,7 @@ public class SignUpActivity extends AppCompatActivity {
                             changeToHomePage();
 
                         }else{
-                            showMessage("Account creation failed!" + task.getException().getMessage());
+                            showMessage(task.getException().getMessage());
                             signUpButton.setVisibility(View.VISIBLE);
                             loadingProgress.setVisibility(View.INVISIBLE);
                         }
@@ -82,7 +97,13 @@ public class SignUpActivity extends AppCompatActivity {
     }
 
     private void changeToHomePage() {
-        Intent intent = new Intent(getApplicationContext(),MainActivity.class);
+        Intent intent = new Intent(getApplicationContext(),HomeActivity.class);
+        startActivity(intent);
+        finish();
+    }
+
+    private void changeToSignInPage() {
+        Intent intent = new Intent(getApplicationContext(),SignInActivity.class);
         startActivity(intent);
         finish();
     }

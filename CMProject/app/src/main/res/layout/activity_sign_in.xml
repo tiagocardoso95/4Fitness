@@ -5,7 +5,34 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/colorSignUpBackground"
-    tools:context=".SignUpActivity">
+    tools:context=".SignInActivity">
+
+    <TextView
+        android:id="@+id/textView4"
+        android:layout_width="39dp"
+        android:layout_height="43dp"
+        android:layout_marginStart="16dp"
+        android:fontFamily="@font/open_sans_bold"
+        android:text="@string/ForFitness_SignUp_name"
+        android:textColor="@color/colorWhite"
+        android:textSize="30sp"
+        android:textStyle="bold"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/textView6"
+        android:layout_width="81dp"
+        android:layout_height="19dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="36dp"
+        android:fontFamily="@font/open_sans_bold"
+        android:text="@string/ForFitnessTradeMark_SignUp_name"
+        android:textColor="@color/colorWhite"
+        android:textSize="12sp"
+        android:textStyle="bold"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
     <android.support.constraint.ConstraintLayout
         android:id="@+id/frameLayout"
@@ -23,13 +50,13 @@
         app:layout_constraintVertical_bias="0.888">
 
         <TextView
-            android:id="@+id/signUp_textView"
+            android:id="@+id/signIn_textView"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="20dp"
             android:layout_marginTop="4dp"
             android:fontFamily="@font/open_sans_bold"
-            android:text="@string/SignUpText"
+            android:text="@string/SignInText"
             android:textColor="@color/colorBlack"
             android:textSize="28sp"
             app:layout_constraintStart_toStartOf="parent"
@@ -50,7 +77,7 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias="0.181" />
+            app:layout_constraintVertical_bias="0.254" />
 
 
         <TextView
@@ -69,7 +96,7 @@
             app:layout_constraintHorizontal_bias="0.0"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias="0.137" />
+            app:layout_constraintVertical_bias="0.152" />
 
 
         <EditText
@@ -87,38 +114,39 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias="0.312" />
-
-        <EditText
-            android:id="@+id/confirmpassword_textField"
-            android:layout_width="290dp"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="8dp"
-            android:layout_marginTop="8dp"
-            android:layout_marginEnd="8dp"
-            android:layout_marginBottom="8dp"
-            android:ems="10"
-            android:hint="@string/prompt_confirmPassword"
-            android:inputType="textPassword"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias="0.449" />
+            app:layout_constraintVertical_bias="0.389" />
 
         <TextView
             android:id="@+id/fillForm_textView"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="20dp"
-            android:layout_marginTop="48dp"
+            android:layout_marginTop="60dp"
             android:fontFamily="@font/open_sans"
-            android:text="@string/SignUpInformation"
+            android:text="@string/SignInInformation"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
+            app:layout_constraintTop_toTopOf="parent"
+            tools:fontFamily="@font/open_sans" />
+
+        <TextView
+            android:id="@+id/forgotPassword_textLink"
+            android:layout_width="wrap_content"
+            android:layout_height="25dp"
+            android:layout_marginStart="8dp"
+            android:layout_marginTop="8dp"
+            android:layout_marginEnd="8dp"
+            android:layout_marginBottom="8dp"
+            android:fontFamily="@font/open_sans_bold"
+            android:text="@string/forgotPasswordText"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.175"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.895" />
 
         <Button
-            android:id="@+id/signup_button"
+            android:id="@+id/signIn_button"
             android:layout_width="95dp"
             android:layout_height="44dp"
             android:layout_marginStart="8dp"
@@ -126,49 +154,51 @@
             android:layout_marginEnd="8dp"
             android:layout_marginBottom="8dp"
             android:background="@color/colorSignUpBackground"
-            android:text="@string/SignUpText"
+            android:text="@string/SignInText"
             android:textColor="@color/colorWhite"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.502"
+            app:layout_constraintHorizontal_bias="0.494"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias="0.583" />
+            app:layout_constraintVertical_bias="0.533" />
 
         <ImageButton
-            android:id="@+id/signUp_facebook_button"
+            android:id="@+id/signIn_facebook_button"
             android:layout_width="322dp"
             android:layout_height="50dp"
             android:layout_marginStart="8dp"
             android:layout_marginTop="8dp"
             android:layout_marginEnd="8dp"
             android:layout_marginBottom="68dp"
-            android:background="@drawable/signupwithfacebook"
+
+            android:background="@drawable/signinwithfacebook"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias="0.853" />
+            app:layout_constraintVertical_bias="0.759" />
 
         <ImageButton
-            android:id="@+id/signUp_google_button"
+            android:id="@+id/signIn_google_button"
             android:layout_width="322dp"
             android:layout_height="50dp"
             android:layout_marginStart="8dp"
             android:layout_marginTop="8dp"
             android:layout_marginEnd="8dp"
             android:layout_marginBottom="8dp"
-            android:background="@drawable/signupwithgoogle"
+
+            android:background="@drawable/signinwithgoogle"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias="0.874" />
+            app:layout_constraintVertical_bias="0.791" />
 
         <ProgressBar
             android:id="@+id/progressBar"
             style="?android:attr/progressBarStyle"
-            android:layout_width="wrap_content"
+            android:layout_width="44dp"
             android:layout_height="wrap_content"
             android:layout_marginStart="8dp"
             android:layout_marginTop="8dp"
@@ -178,67 +208,57 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias="0.588" />
+            app:layout_constraintVertical_bias="0.53" />
 
         <TextView
-            android:id="@+id/alreadyRegistered_textView"
-            android:layout_width="151dp"
+            android:id="@+id/noAccount_textView"
+            android:layout_width="94dp"
             android:layout_height="27dp"
             android:layout_marginStart="8dp"
             android:layout_marginTop="8dp"
             android:layout_marginEnd="8dp"
             android:layout_marginBottom="8dp"
-            android:text="Already Registered?"
+            android:text="No Account?"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.205"
+            app:layout_constraintHorizontal_bias="0.293"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias="0.981"
+            app:layout_constraintVertical_bias="0.969"
             tools:fontFamily="@font/open_sans_bold" />
 
         <Button
-            android:id="@+id/signIn_button"
-            android:layout_width="74dp"
-            android:layout_height="38dp"
+            android:id="@+id/signUp_button"
+            android:layout_width="67dp"
+            android:layout_height="30dp"
             android:layout_marginStart="8dp"
             android:layout_marginEnd="8dp"
-            android:layout_marginBottom="16dp"
+            android:layout_marginBottom="24dp"
             android:background="@color/colorSignUpBackground"
-            android:text="@string/SignInText"
+            android:text="@string/SignUpText"
             android:textColor="@color/colorWhite"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.848"
+            app:layout_constraintHorizontal_bias="0.726"
             app:layout_constraintStart_toStartOf="parent" />
 
+        <Button
+            android:id="@+id/recoverPassword_button"
+            android:layout_width="67dp"
+            android:layout_height="30dp"
+            android:layout_marginStart="8dp"
+            android:layout_marginTop="8dp"
+            android:layout_marginEnd="88dp"
+            android:layout_marginBottom="64dp"
+            android:background="@color/colorSignUpBackground"
+            android:text="@string/recoverPassword"
+            android:textColor="@color/colorWhite"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="1.0"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="1.0" />
+
     </android.support.constraint.ConstraintLayout>
-
-    <TextView
-        android:id="@+id/textView3"
-        android:layout_width="39dp"
-        android:layout_height="43dp"
-        android:layout_marginStart="16dp"
-        android:fontFamily="@font/open_sans_bold"
-        android:text="@string/ForFitness_SignUp_name"
-        android:textColor="@color/colorWhite"
-        android:textSize="30sp"
-        android:textStyle="bold"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
-
-    <TextView
-        android:id="@+id/textView5"
-        android:layout_width="81dp"
-        android:layout_height="19dp"
-        android:layout_marginStart="16dp"
-        android:layout_marginTop="36dp"
-        android:fontFamily="@font/open_sans_bold"
-        android:text="@string/ForFitnessTradeMark_SignUp_name"
-        android:textColor="@color/colorWhite"
-        android:textSize="12sp"
-        android:textStyle="bold"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
-
 </android.support.constraint.ConstraintLayout>
