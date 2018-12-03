@@ -106,7 +106,7 @@ public class SignInActivity extends AppCompatActivity {
     private void ChangeToResetPassword() {
         Intent intent = new Intent(getApplicationContext(), ResetPasswordActivity.class);
         startActivity(intent);
-        finish();
+
     }
 
     private void changeToHomePage() {

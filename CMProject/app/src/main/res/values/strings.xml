@@ -16,5 +16,6 @@
     <string name="sendEmailText">Send</string>
     <string name="recoverPassword">Recover</string>
     <string name="forgotPasswordText">Forgot your Password?</string>
+    <string name="noAccountText">No Account?</string>
     <string name="resetPasswordTextInformation">Please insert your email below and press the send button, we will send you an email with a link where you can reset your password!</string>
 </resources>
