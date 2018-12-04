@@ -10,6 +10,7 @@
     <string name="ForFitnessTradeMark_SignUp_name">For Fitness™</string>
     <string name="SignUpText">Sign Up</string>
     <string name="SignInText">Sign In</string>
+    <string name="LogOutText">Log Out</string>
     <string name="SignUpInformation">Please Fill in this Form to Create an Account!</string>
     <string name="SignInInformation">Please Fill in this Form to Sign In!</string>
     <string name="resetPassword">Reset Password</string>
@@ -18,4 +19,9 @@
     <string name="forgotPasswordText">Forgot your Password?</string>
     <string name="noAccountText">No Account?</string>
     <string name="resetPasswordTextInformation">Please insert your email below and press the send button, we will send you an email with a link where you can reset your password!</string>
+
+    <!-- Strings related to facebook login -->
+    <string name="facebook_app_id">503170173502064</string>
+    <string name="fb_login_protocol_scheme">fb503170173502064</string>
+
 </resources>

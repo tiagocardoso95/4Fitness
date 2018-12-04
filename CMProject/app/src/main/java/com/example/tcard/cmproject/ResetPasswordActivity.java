@@ -1,6 +1,7 @@
 package com.example.tcard.cmproject;
 
 import android.content.Intent;
+import android.graphics.Color;
 import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -27,6 +28,7 @@ public class ResetPasswordActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         requestWindowFeature(Window.FEATURE_NO_TITLE);
         setContentView(R.layout.activity_reset_password);
+        getWindow().setStatusBarColor(Color.BLACK);
 
         email_textField = findViewById(R.id.email_textField);
         sendButton = findViewById(R.id.resetPassword_button);

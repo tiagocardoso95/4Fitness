@@ -46,6 +46,7 @@
             android:ems="10"
             android:hint="@string/prompt_email"
             android:inputType="textEmailAddress"
+            android:textCursorDrawable="@null"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
@@ -60,8 +61,8 @@
             android:layout_height="1dp"
             android:layout_marginTop="8dp"
             android:layout_marginBottom="8dp"
-            android:alpha="0.4"
-            android:background="#000"
+            android:alpha="0.5"
+            android:background="@color/colorSignUpBackground"
             android:gravity="center_horizontal"
             android:paddingTop="5dip"
             app:layout_constraintBottom_toBottomOf="parent"
@@ -82,6 +83,7 @@
             android:layout_marginBottom="8dp"
             android:ems="10"
             android:hint="@string/prompt_password"
+            android:textCursorDrawable="@null"
             android:inputType="textPassword"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
@@ -99,6 +101,7 @@
             android:layout_marginBottom="8dp"
             android:ems="10"
             android:hint="@string/prompt_confirmPassword"
+            android:textCursorDrawable="@null"
             android:inputType="textPassword"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
@@ -135,7 +138,7 @@
             app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintVertical_bias="0.583" />
 
-        <ImageButton
+        <Button
             android:id="@+id/signUp_facebook_button"
             android:layout_width="322dp"
             android:layout_height="50dp"

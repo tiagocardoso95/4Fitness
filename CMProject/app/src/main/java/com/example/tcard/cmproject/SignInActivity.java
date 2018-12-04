@@ -1,6 +1,7 @@
 package com.example.tcard.cmproject;
 
 import android.content.Intent;
+import android.graphics.Color;
 import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -30,6 +31,7 @@ public class SignInActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         requestWindowFeature(Window.FEATURE_NO_TITLE);
         setContentView(R.layout.activity_sign_in);
+        getWindow().setStatusBarColor(Color.BLACK);
 
         userEmail = findViewById(R.id.email_textField);
         userPassword = findViewById(R.id.password_textField);
@@ -41,7 +43,6 @@ public class SignInActivity extends AppCompatActivity {
         recoverPasswordButton = findViewById(R.id.recoverPassword_button);
 
         fbAuth = FirebaseAuth.getInstance();
-
 
 
         recoverPasswordButton.setOnClickListener(new View.OnClickListener() {
@@ -65,7 +66,7 @@ public class SignInActivity extends AppCompatActivity {
                     signInButton.setVisibility(View.VISIBLE);
                     progressBar.setVisibility(View.INVISIBLE);
                 }else{
-                    signIn(email, password);
+                    signInWithEmail(email, password);
                 }
 
             }
@@ -83,7 +84,7 @@ public class SignInActivity extends AppCompatActivity {
     }
 
 
-    private void signIn(String email, String password) {
+    private void signInWithEmail(String email, String password) {
         fbAuth.signInWithEmailAndPassword(email,password).addOnCompleteListener(new OnCompleteListener<AuthResult>() {
             @Override
             public void onComplete(@NonNull Task<AuthResult> task) {
@@ -106,7 +107,6 @@ public class SignInActivity extends AppCompatActivity {
     private void ChangeToResetPassword() {
         Intent intent = new Intent(getApplicationContext(), ResetPasswordActivity.class);
         startActivity(intent);
-
     }
 
     private void changeToHomePage() {

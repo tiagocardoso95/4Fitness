@@ -73,11 +73,12 @@
             android:ems="10"
             android:hint="@string/prompt_email"
             android:inputType="textEmailAddress"
+            android:textCursorDrawable="@null"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias="0.234" />
+            app:layout_constraintVertical_bias="0.259" />
 
 
         <TextView
@@ -87,8 +88,8 @@
             android:layout_height="1dp"
             android:layout_marginTop="8dp"
             android:layout_marginBottom="8dp"
-            android:alpha="0.4"
-            android:background="#000"
+            android:alpha="0.5"
+            android:background="@color/colorSignUpBackground"
             android:gravity="center_horizontal"
             android:paddingTop="5dip"
             app:layout_constraintBottom_toBottomOf="parent"
@@ -109,12 +110,13 @@
             android:layout_marginBottom="8dp"
             android:ems="10"
             android:hint="@string/prompt_password"
+            android:textCursorDrawable="@null"
             android:inputType="textPassword"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias="0.368" />
+            app:layout_constraintVertical_bias="0.445" />
 
         <TextView
             android:id="@+id/fillForm_textView"
@@ -143,7 +145,7 @@
             app:layout_constraintHorizontal_bias="0.107"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias="0.898" />
+            app:layout_constraintVertical_bias="0.884" />
 
         <Button
             android:id="@+id/signIn_button"
@@ -161,39 +163,7 @@
             app:layout_constraintHorizontal_bias="0.502"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias="0.498" />
-
-        <ImageButton
-            android:id="@+id/signIn_facebook_button"
-            android:layout_width="322dp"
-            android:layout_height="50dp"
-            android:layout_marginStart="8dp"
-            android:layout_marginTop="8dp"
-            android:layout_marginEnd="8dp"
-            android:layout_marginBottom="68dp"
-
-            android:background="@drawable/signinwithfacebook"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias="0.759" />
-
-        <ImageButton
-            android:id="@+id/signIn_google_button"
-            android:layout_width="322dp"
-            android:layout_height="50dp"
-            android:layout_marginStart="8dp"
-            android:layout_marginTop="8dp"
-            android:layout_marginEnd="8dp"
-            android:layout_marginBottom="8dp"
-
-            android:background="@drawable/signinwithgoogle"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias="0.791" />
+            app:layout_constraintVertical_bias="0.648" />
 
         <ProgressBar
             android:id="@+id/progressBar"
@@ -208,7 +178,7 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias="0.501" />
+            app:layout_constraintVertical_bias="0.652" />
 
         <TextView
             android:id="@+id/noAccount_textView"
@@ -247,7 +217,7 @@
             android:layout_width="67dp"
             android:layout_height="30dp"
             android:layout_marginStart="200dp"
-            android:layout_marginTop="408dp"
+            android:layout_marginTop="404dp"
             android:background="@color/colorSignUpBackground"
             android:text="@string/recoverPassword"
             android:textColor="@color/colorWhite"

@@ -1,18 +1,24 @@
 package com.example.tcard.cmproject;
 
 import android.content.Intent;
+import android.graphics.Color;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.WindowManager;
+
+import com.google.firebase.auth.FirebaseAuth;
 
 
 public class SplashScreenActivity extends AppCompatActivity {
 
     private int SLEEP_TIMER = 3; //3 seconds
+    private FirebaseAuth fbAuth;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        getWindow().setStatusBarColor(Color.BLACK);
+        fbAuth = FirebaseAuth.getInstance();
 
         //SplashScreen FullScreen
         getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN,WindowManager.LayoutParams.FLAG_FULLSCREEN);
@@ -31,12 +37,20 @@ public class SplashScreenActivity extends AppCompatActivity {
             }catch(InterruptedException e){
                 e.printStackTrace();
             }
+            //Method that checks if a User is Logged in and redirects him to the next page
+            checkIfUserLoggedIn();
+        }
+    }
 
-            //Intent used to change between activities
-            Intent intent = new Intent(SplashScreenActivity.this, SignUpActivity.class);
+    private void checkIfUserLoggedIn(){
+        Intent intent;
+        if(fbAuth.getCurrentUser() != null){
+            intent = new Intent(getApplicationContext(), HomeActivity.class);
             startActivity(intent);
-
-            //Finishes the splash screen action after its done running
+            SplashScreenActivity.this.finish();
+        }else{
+            intent = new Intent(getApplicationContext(), SignUpActivity.class);
+            startActivity(intent);
             SplashScreenActivity.this.finish();
         }
     }
