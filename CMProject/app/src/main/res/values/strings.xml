@@ -23,5 +23,10 @@
     <!-- Strings related to facebook login -->
     <string name="facebook_app_id">503170173502064</string>
     <string name="fb_login_protocol_scheme">fb503170173502064</string>
+    <string name="title_activity_hidration">HidrationActivity</string>
+    <string name="temperatureString">Temperature</string>
+    <string name="weightStringH">Weight</string>
+    <string name="HumidityString">Humidity</string>
+    <string name="waterIntake">Ammount for Today:</string>
 
 </resources>
