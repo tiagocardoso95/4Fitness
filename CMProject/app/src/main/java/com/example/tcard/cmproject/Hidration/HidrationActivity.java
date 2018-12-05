@@ -6,10 +6,17 @@ import android.support.design.widget.Snackbar;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.View;
+import android.widget.TextView;
 
 import com.example.tcard.cmproject.R;
+import com.example.tcard.cmproject.UserStats.UserStats;
+import com.example.tcard.cmproject.Utility.DB;
 
 public class HidrationActivity extends AppCompatActivity {
+
+    private DB database;
+
+    private TextView temperature,weight,humidity,ammount;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -18,15 +25,21 @@ public class HidrationActivity extends AppCompatActivity {
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
-        FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
-        fab.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
-                        .setAction("Action", null).show();
-            }
-        });
+        database = DB.getInstance();
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
-    }
 
+        temperature = findViewById(R.id.temperatureString);
+        weight = findViewById(R.id.weightT);
+        humidity = findViewById(R.id.humidityT);
+        ammount =  findViewById(R.id.ammountT);
+
+        UserStats stats = database.getCurUser();
+
+        weight.setText(weight.getText()+": \n +"+stats.getWeight());
+
+        //Calculate ammount
+        // get temperature
+        // get humidity
+
+    }
 }

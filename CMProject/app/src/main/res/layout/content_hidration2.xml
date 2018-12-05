@@ -26,7 +26,7 @@
         tools:text="@string/temperatureString" />
 
     <TextView
-        android:id="@+id/textView2"
+        android:id="@+id/weightT"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="8dp"
@@ -43,7 +43,7 @@
         tools:text="@string/weightStringH" />
 
     <TextView
-        android:id="@+id/textView7"
+        android:id="@+id/humidityT"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginEnd="128dp"
@@ -54,7 +54,7 @@
         tools:text="@string/HumidityString" />
 
     <TextView
-        android:id="@+id/textView8"
+        android:id="@+id/ammountT"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="112dp"

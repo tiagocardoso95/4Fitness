@@ -15,6 +15,8 @@ import android.widget.EditText;
 import android.widget.ProgressBar;
 import android.widget.Toast;
 
+import com.example.tcard.cmproject.UserStats.UserStats;
+import com.example.tcard.cmproject.Utility.DB;
 import com.facebook.AccessToken;
 import com.facebook.CallbackManager;
 import com.facebook.FacebookCallback;
@@ -28,6 +30,7 @@ import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FacebookAuthProvider;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.auth.UserInfo;
 
 import java.util.Arrays;
 
@@ -178,6 +181,17 @@ public class SignUpActivity extends AppCompatActivity {
                         if(task.isSuccessful()){
                             //user account created successfully
                             showMessage("Account created!");
+
+                            //Create stats
+                            DB database = DB.getInstance();
+                            FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
+                            String ID = null;
+                            for (UserInfo info :user.getProviderData()){
+                              ID = info.getUid();
+                            }
+                            UserStats stats = new UserStats(0.0f,0.0f,"Undefined",ID);
+                            DB.getInstance().getUserStatsTable().child(ID).setValue(stats);
+
                             changeToHomePage();
                         }else{
                             showMessage(task.getException().getMessage());
