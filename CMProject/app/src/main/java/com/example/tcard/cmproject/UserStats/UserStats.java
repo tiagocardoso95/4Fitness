@@ -1,6 +1,9 @@
 package com.example.tcard.cmproject.UserStats;
 
+import com.google.firebase.database.DatabaseReference;
+
 public class UserStats {
+    private static UserStats instance;
 
     private String id;
     private float weight;
@@ -13,6 +16,15 @@ public class UserStats {
         this.height = height;
         this.name = name;
         this.id = id;
+        if(instance == null){
+            instance = this;
+        }
+    }
+    public static UserStats GetInstance(){
+        return instance;
+    }
+    public static void UpdateInstance(UserStats stats){
+        instance = stats;
     }
 
     public UserStats(){

@@ -5,6 +5,7 @@ import android.graphics.Color;
 import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.view.Window;
 import android.widget.Button;
@@ -12,10 +13,16 @@ import android.widget.EditText;
 import android.widget.ProgressBar;
 import android.widget.Toast;
 
+import com.example.tcard.cmproject.UserStats.UserStats;
+import com.example.tcard.cmproject.Utility.DB;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.ValueEventListener;
 
 public class SignInActivity extends AppCompatActivity {
 
@@ -93,6 +100,22 @@ public class SignInActivity extends AppCompatActivity {
                     progressBar.setVisibility(View.INVISIBLE);
                     signInButton.setVisibility(View.VISIBLE);
                     showMessage("Sign In Successful!");
+                    //Get User stats from DB;
+                    String id = FirebaseAuth.getInstance().getCurrentUser().getUid();
+                    DatabaseReference ref = DB.getInstance().getUserStatsTable().child(id);
+                    ref.addValueEventListener(new ValueEventListener() {
+                        @Override
+                        public void onDataChange(DataSnapshot dataSnapshot) {
+                            UserStats stats = dataSnapshot.getValue(UserStats.class);
+                            Log.i("Error",stats.getHeight()+" | "+stats.getName() + ">---------------");
+                            UserStats.UpdateInstance(stats);
+                        }
+
+                        @Override
+                        public void onCancelled(DatabaseError databaseError) {
+                            System.out.println("The read failed: " + databaseError.getCode());
+                        }
+                    });
                     changeToHomePage();
                 }
                 else {

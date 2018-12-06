@@ -10,6 +10,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.tcard.cmproject.Hydration.HydrationActivity;
+import com.example.tcard.cmproject.UserStats.UserStats;
 import com.facebook.login.LoginManager;
 import com.google.android.gms.auth.api.signin.GoogleSignIn;
 import com.google.android.gms.auth.api.signin.GoogleSignInAccount;
@@ -60,7 +61,12 @@ public class HomeActivity extends AppCompatActivity {
                 idText.setText("ID: "+profile.getUid());
 
                 // Name, email address
-                NameText.setText("Name: "+profile.getDisplayName());
+                String name = profile.getDisplayName();
+                if(name == null) {
+                 // name = UserStats.GetInstance().getName();
+                    name = "fukin fix the db";
+                }
+                NameText.setText("Name: " + name);
                 EmailText.setText("Email: "+profile.getEmail());
             }
         }
