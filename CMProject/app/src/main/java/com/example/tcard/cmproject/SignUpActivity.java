@@ -235,11 +235,7 @@ public class SignUpActivity extends AppCompatActivity {
                         if(task.isSuccessful()){
                             //user account created successfully
                             showMessage("Account created!");
-                            changeToHomePage();
-
-
                             /*Create stats*/
-
                             FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
                             String ID = null;
                             ID = user.getUid();
@@ -247,7 +243,7 @@ public class SignUpActivity extends AppCompatActivity {
                             UserStats stats = new UserStats(0.0f,0.0f,"Undefined",ID);
                             DB.getInstance().getUserStatsTable().child(ID).setValue(stats);
 
-
+                            changeToHomePage();
                         }else{
                             showMessage(task.getException().getMessage());
                             signUpEmailButton.setVisibility(View.VISIBLE);

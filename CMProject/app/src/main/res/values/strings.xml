@@ -28,5 +28,6 @@
     <string name="weightStringH">Weight</string>
     <string name="HumidityString">Humidity</string>
     <string name="waterIntake">Ammount for Today:</string>
+    <string name="based">Based On:</string>
 
 </resources>

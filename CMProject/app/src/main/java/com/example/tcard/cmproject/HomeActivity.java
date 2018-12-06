@@ -4,6 +4,7 @@ import android.content.Intent;
 import android.graphics.Color;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
@@ -11,6 +12,7 @@ import android.widget.Toast;
 
 import com.example.tcard.cmproject.Hydration.HydrationActivity;
 import com.example.tcard.cmproject.UserStats.UserStats;
+import com.example.tcard.cmproject.Utility.DB;
 import com.facebook.login.LoginManager;
 import com.google.android.gms.auth.api.signin.GoogleSignIn;
 import com.google.android.gms.auth.api.signin.GoogleSignInAccount;
@@ -19,6 +21,10 @@ import com.google.android.gms.auth.api.signin.GoogleSignInOptions;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.auth.UserInfo;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.ValueEventListener;
 
 
 public class HomeActivity extends AppCompatActivity {
@@ -53,23 +59,44 @@ public class HomeActivity extends AppCompatActivity {
         hydrationManagerButton = findViewById(R.id.hydrationManager_button);
         runningTrackerButton = findViewById(R.id.runningTracker_button);
 
-        //Teste para ir buscar os dados do utilizador FireBase e Facebook
-        FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
-        if (user != null) {
-            for (UserInfo profile : user.getProviderData()) {
-                // UID specific to the provider
-                idText.setText("ID: "+profile.getUid());
+        //Get User stats from DB;
+        String id = FirebaseAuth.getInstance().getCurrentUser().getUid();
+        DatabaseReference ref = DB.getInstance().getUserStatsTable().child(id);
+        ref.addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(DataSnapshot dataSnapshot) {
+                UserStats stats = dataSnapshot.getValue(UserStats.class);
+                Log.i("Error",stats.getHeight()+" | "+stats.getName() + ">---------------");
+                UserStats.UpdateInstance(stats);
 
-                // Name, email address
-                String name = profile.getDisplayName();
-                if(name == null) {
-                 // name = UserStats.GetInstance().getName();
-                    name = "fukin fix the db";
+                //Teste para ir buscar os dados do utilizador FireBase e Facebook
+                FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
+                if (user != null) {
+                    for (UserInfo profile : user.getProviderData()) {
+                        // UID specific to the provider
+                        idText.setText("ID: "+profile.getUid());
+
+                        // Name, email address
+                        String name = profile.getDisplayName();
+                        if(name == null) {
+                            name = UserStats.GetInstance().getName();
+                            if(name == null) {
+                                name = "fukin fix the db";
+                            }
+                        }
+                        NameText.setText("Name: " + name);
+                        EmailText.setText("Email: "+profile.getEmail());
+                    }
                 }
-                NameText.setText("Name: " + name);
-                EmailText.setText("Email: "+profile.getEmail());
             }
-        }
+
+            @Override
+            public void onCancelled(DatabaseError databaseError) {
+                System.out.println("The read failed: " + databaseError.getCode());
+            }
+        });
+
+
 
         //Teste para ir buscar os dados do utilizador google
         GoogleSignInAccount acct = GoogleSignIn.getLastSignedInAccount(getApplicationContext());
