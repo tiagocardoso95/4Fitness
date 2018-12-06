@@ -18,14 +18,19 @@ public class DB {
         }
         database = FirebaseDatabase.getInstance();
 
-        userStatsTable = database.getReference("users");
+        DatabaseReference ref = database.getReference();
+        userStatsTable = ref.child("users");
     }
 
     public static DB getInstance(){
         return instance;
     }
 
-
+    public static void Instantiate(){
+        if(instance == null){
+            instance = new DB();
+        }
+    }
     public FirebaseDatabase getDatabase() {
         return database;
     }

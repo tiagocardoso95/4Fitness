@@ -6,6 +6,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.WindowManager;
 
+import com.example.tcard.cmproject.Utility.DB;
 import com.google.firebase.auth.FirebaseAuth;
 
 
@@ -19,7 +20,7 @@ public class SplashScreenActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         getWindow().setStatusBarColor(Color.BLACK);
         fbAuth = FirebaseAuth.getInstance();
-
+        DB.Instantiate();
         //SplashScreen FullScreen
         getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN,WindowManager.LayoutParams.FLAG_FULLSCREEN);
         setContentView(R.layout.activity_splash_screen);
