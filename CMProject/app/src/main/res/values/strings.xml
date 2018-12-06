@@ -30,4 +30,9 @@
     <string name="waterIntake">Ammount for Today:</string>
     <string name="based">Based On:</string>
 
+    <string-array name="HomeOptions">
+        <item>Options</item>
+        <item>Logout</item>
+    </string-array>
+
 </resources>

@@ -1,6 +1,7 @@
 package com.example.tcard.cmproject.Hydration;
 
 import android.content.Context;
+import android.content.Intent;
 import android.hardware.Sensor;
 import android.hardware.SensorEvent;
 import android.hardware.SensorEventListener;
@@ -12,6 +13,7 @@ import android.util.Log;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.example.tcard.cmproject.HomeActivity;
 import com.example.tcard.cmproject.R;
 import com.example.tcard.cmproject.UserStats.UserStats;
 import com.example.tcard.cmproject.Utility.DB;
@@ -24,16 +26,20 @@ public class HydrationActivity extends AppCompatActivity implements SensorEventL
     private SensorManager mSensorManager;
     private Sensor mTemperature, mHumidity;
 
-    private float temperaturef;
+    private float temperaturef,humidityf;
     private UserStats stats;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_hidration);
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
+        toolbar.setTitle("Hidration Manager");
+
         setSupportActionBar(toolbar);
-        database = DB.getInstance();
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        getSupportActionBar().setDisplayShowHomeEnabled(true);
+
+        database = DB.getInstance();
         temperature = findViewById(R.id.temperatureT);
         weight = findViewById(R.id.weightT);
         humidity = findViewById(R.id.humidityT);
@@ -43,10 +49,11 @@ public class HydrationActivity extends AppCompatActivity implements SensorEventL
 
         stats = UserStats.GetInstance();
 
+        // Images
         ImageView droplet = (ImageView) findViewById(R.id.dropImg);
         droplet.setImageResource(getResources().getIdentifier("@drawable/droplet",null,this.getPackageName()));
 
-        weight.setText(weight.getText()+": \n +"+stats.getWeight());
+        weight.setText(stats.getWeight()+" Kg");
 
         //GET sensors
         mSensorManager = (SensorManager) getSystemService(Context.SENSOR_SERVICE);
@@ -54,11 +61,16 @@ public class HydrationActivity extends AppCompatActivity implements SensorEventL
         mHumidity = mSensorManager.getDefaultSensor(Sensor.TYPE_RELATIVE_HUMIDITY);
 
 
-        //Calculate ammount
-        // get temperature
-        // get humidity
-
     }
+    @Override
+    public boolean onSupportNavigateUp() {
+        //
+        Intent intent = new Intent(HydrationActivity.this, HomeActivity.class);
+        startActivity(intent);
+        finish();
+        return true;
+    }
+
     @Override
     protected void onResume(){
         super.onResume();
@@ -75,18 +87,20 @@ public class HydrationActivity extends AppCompatActivity implements SensorEventL
         if(temperaturef > 25.0f){
             amt *= 1.25;
         }
+        amt += humidityf*0.005f;
 
         return amt;
     }
 
-
     @Override
     public void onSensorChanged(SensorEvent event) {
         temperaturef = event.values[0];
-        float hum = event.values[1];
-        humidity.setText(humidity.getText()+": \n"+hum+"");
-        temperature.setText(temperature.getText()+": \n"+temperaturef+" ºC");
-        ammount.setText(ammount.getText()+": \n"+calculateWater()+" L");
+        humidityf = event.values[1];
+
+        // Set Values
+        humidity.setText(humidityf+"");
+        temperature.setText(temperaturef+" ºC");
+        ammount.setText(calculateWater()+" L");
         mSensorManager.unregisterListener(this);
     }
 

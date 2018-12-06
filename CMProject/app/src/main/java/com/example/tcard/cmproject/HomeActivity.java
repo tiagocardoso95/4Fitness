@@ -6,9 +6,13 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
+import android.widget.AdapterView;
+import android.widget.ArrayAdapter;
 import android.widget.Button;
+import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
+import android.support.v7.widget.Toolbar;
 
 import com.example.tcard.cmproject.Hydration.HydrationActivity;
 import com.example.tcard.cmproject.UserStats.UserStats;
@@ -27,9 +31,9 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.ValueEventListener;
 
 
-public class HomeActivity extends AppCompatActivity {
+public class HomeActivity extends AppCompatActivity implements AdapterView.OnItemSelectedListener {
 
-    private Button signOutButton, hydrationManagerButton, runningTrackerButton;
+    private Button hydrationManagerButton, runningTrackerButton;
     private TextView idText, NameText, EmailText;
 
     private FirebaseAuth fbAuth;
@@ -41,6 +45,17 @@ public class HomeActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_home);
         getWindow().setStatusBarColor(Color.BLACK);
+        Toolbar toolbar = findViewById(R.id.homeToolbar);
+        toolbar.setTitle("4F");
+        Spinner spinner = findViewById(R.id.spinner);
+        // Create an ArrayAdapter using the string array and a default spinner layout
+        ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(this,
+                R.array.HomeOptions, android.R.layout.simple_spinner_item);
+            // Specify the layout to use when the list of choices appears
+        adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        // Apply the adapter to the spinner
+        spinner.setAdapter(adapter);
+        spinner.setOnItemSelectedListener(this);
 
         fbAuth = FirebaseAuth.getInstance();
 
@@ -50,7 +65,7 @@ public class HomeActivity extends AppCompatActivity {
                 .build();
         mGoogleSignInClient = GoogleSignIn.getClient(this, gso);
 
-        signOutButton = findViewById(R.id.signOut_button);
+
 
         idText = findViewById(R.id.userID);
         NameText = findViewById(R.id.userName);
@@ -78,13 +93,14 @@ public class HomeActivity extends AppCompatActivity {
 
                         // Name, email address
                         String name = profile.getDisplayName();
+                        Log.i("HOME_DBGET","Gets name from DB");
                         if(name == null) {
                             name = UserStats.GetInstance().getName();
                             if(name == null) {
                                 name = "fukin fix the db";
                             }
                         }
-                        NameText.setText("Name: " + name);
+                        NameText.setText(name);
                         EmailText.setText("Email: "+profile.getEmail());
                     }
                 }
@@ -105,18 +121,6 @@ public class HomeActivity extends AppCompatActivity {
             NameText.setText("Name_Google: "+acct.getDisplayName());
             EmailText.setText("Email_Google: "+acct.getEmail());
         }
-
-
-        signOutButton.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View v) {
-                    fbAuth.signOut();
-                    LoginManager.getInstance().logOut();
-                    mGoogleSignInClient.signOut();
-                    showMessage("You are Logged out!");
-                    changeToSignUp();
-                }
-            });
 
         hydrationManagerButton.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -153,5 +157,26 @@ public class HomeActivity extends AppCompatActivity {
         //Intent intent = new Intent(HomeActivity.this, RunningTracker.class);
         //startActivity(intent);
         //finish();
+    }
+
+    @Override
+    public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+        String text = (String)parent.getItemAtPosition(position);
+        switch (text){
+            case "Logout":
+                fbAuth.signOut();
+                LoginManager.getInstance().logOut();
+                mGoogleSignInClient.signOut();
+                showMessage("You are Logged out!");
+                changeToSignUp();
+                break;
+            case "Options":
+                Log.i("HOME_ACTIVITY","Options not implemented");
+        }
+    }
+
+    @Override
+    public void onNothingSelected(AdapterView<?> parent) {
+
     }
 }
