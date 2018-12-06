@@ -62,7 +62,7 @@
             </intent-filter>
         </activity>
         <activity
-            android:name=".Hidration.HidrationActivity"
+            android:name=".Hydration.HydrationActivity"
             android:label="@string/title_activity_hidration"
             android:parentActivityName=".HomeActivity"
             android:theme="@style/AppTheme">

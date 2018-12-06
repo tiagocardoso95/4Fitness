@@ -1,18 +1,15 @@
-package com.example.tcard.cmproject.Hidration;
+package com.example.tcard.cmproject.Hydration;
 
 import android.os.Bundle;
-import android.support.design.widget.FloatingActionButton;
-import android.support.design.widget.Snackbar;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
-import android.view.View;
 import android.widget.TextView;
 
 import com.example.tcard.cmproject.R;
 import com.example.tcard.cmproject.UserStats.UserStats;
 import com.example.tcard.cmproject.Utility.DB;
 
-public class HidrationActivity extends AppCompatActivity {
+public class HydrationActivity extends AppCompatActivity {
 
     private DB database;
 

@@ -37,11 +37,11 @@ public class SplashScreenActivity extends AppCompatActivity {
             }catch(InterruptedException e){
                 e.printStackTrace();
             }
-            //Method that checks if a User is Logged in and redirects him to the next page
             checkIfUserLoggedIn();
         }
     }
 
+    //Method that checks if a User is Logged in and redirects him to the next page
     private void checkIfUserLoggedIn(){
         Intent intent;
         if(fbAuth.getCurrentUser() != null){

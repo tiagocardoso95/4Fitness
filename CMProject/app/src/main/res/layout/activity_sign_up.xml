@@ -153,7 +153,7 @@
             app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintVertical_bias="0.853" />
 
-        <ImageButton
+        <Button
             android:id="@+id/signUp_google_button"
             android:layout_width="322dp"
             android:layout_height="50dp"
