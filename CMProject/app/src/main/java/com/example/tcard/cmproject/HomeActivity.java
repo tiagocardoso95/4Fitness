@@ -23,7 +23,7 @@ import com.google.firebase.auth.UserInfo;
 
 public class HomeActivity extends AppCompatActivity {
 
-    private Button signOutButton, hydrationManagerButton, runningTrackerButton;
+    private Button  hydrationManagerButton, runningTrackerButton;
     private TextView idText, NameText, EmailText;
 
     private FirebaseAuth fbAuth;
@@ -44,7 +44,7 @@ public class HomeActivity extends AppCompatActivity {
                 .build();
         mGoogleSignInClient = GoogleSignIn.getClient(this, gso);
 
-        signOutButton = findViewById(R.id.signOut_button);
+        //signOutButton = findViewById(R.id.signOut_button);
 
         idText = findViewById(R.id.userID);
         NameText = findViewById(R.id.userName);
@@ -80,16 +80,7 @@ public class HomeActivity extends AppCompatActivity {
         }
 
 
-        signOutButton.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View v) {
-                    fbAuth.signOut();
-                    LoginManager.getInstance().logOut();
-                    mGoogleSignInClient.signOut();
-                    showMessage("You are Logged out!");
-                    changeToSignUp();
-                }
-            });
+
 
         hydrationManagerButton.setOnClickListener(new View.OnClickListener() {
             @Override
