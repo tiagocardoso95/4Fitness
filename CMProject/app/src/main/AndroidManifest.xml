@@ -3,6 +3,8 @@
     package="com.example.tcard.cmproject">
 
     <uses-permission android:name="android.permission.INTERNET" />
+    <uses-feature android:name="android.hardware.sensor.stepcounter" android:required="true"/>
+    <uses-feature android:name="android.hardware.sensor.stepdetector" android:required="true"/>
 
     <!-- To auto-complete the email text field in the login form with the user's emails -->
     <uses-permission android:name="android.permission.GET_ACCOUNTS" />
@@ -70,6 +72,7 @@
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value="com.example.tcard.cmproject.HomeActivity" />
         </activity>
+        <activity android:name=".RunningTracker.RunningTrackerActivity"></activity>
     </application>
 
 </manifest>
