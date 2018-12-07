@@ -10,7 +10,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.tcard.cmproject.Hydration.HydrationActivity;
-import com.example.tcard.cmproject.RunningTracker.RunningTrackerActivity;
+import com.example.tcard.cmproject.UserStats.UserStats;
 import com.facebook.login.LoginManager;
 import com.google.android.gms.auth.api.signin.GoogleSignIn;
 import com.google.android.gms.auth.api.signin.GoogleSignInAccount;
@@ -123,8 +123,8 @@ public class HomeActivity extends AppCompatActivity {
         finish();
     }
     private void changeToRunningTracker(){
-        Intent intent = new Intent(HomeActivity.this, RunningTrackerActivity.class);
-        startActivity(intent);
+        //Intent intent = new Intent(HomeActivity.this, RunningTracker.class);
+        //startActivity(intent);
         //finish();
     }
 }

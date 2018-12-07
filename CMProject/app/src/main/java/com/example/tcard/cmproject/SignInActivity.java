@@ -100,22 +100,7 @@ public class SignInActivity extends AppCompatActivity {
                     progressBar.setVisibility(View.INVISIBLE);
                     signInButton.setVisibility(View.VISIBLE);
                     showMessage("Sign In Successful!");
-                    //Get User stats from DB;
-                    String id = FirebaseAuth.getInstance().getCurrentUser().getUid();
-                    DatabaseReference ref = DB.getInstance().getUserStatsTable().child(id);
-                    ref.addValueEventListener(new ValueEventListener() {
-                        @Override
-                        public void onDataChange(DataSnapshot dataSnapshot) {
-                            UserStats stats = dataSnapshot.getValue(UserStats.class);
-                            Log.i("Error",stats.getHeight()+" | "+stats.getName() + ">---------------");
-                            UserStats.UpdateInstance(stats);
-                        }
 
-                        @Override
-                        public void onCancelled(DatabaseError databaseError) {
-                            System.out.println("The read failed: " + databaseError.getCode());
-                        }
-                    });
                     changeToHomePage();
                 }
                 else {
